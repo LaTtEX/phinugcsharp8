@@ -9,7 +9,7 @@ namespace PhinugCSharp8Demo
         public Dispositor()
         {
             Console.WriteLine("This is the Dispositor class constructor!");
-            this.Numbers = new List<int>() { 1, 2, 3, 4, 5 };
+            this.Numbers = new List<int>() { 1, 2, 3, 4, 5, 21, 35, 36, 99, 102, 105, 2014, 32766 };
         }
 
         public IEnumerable<int> Numbers { get; }
@@ -24,12 +24,7 @@ namespace PhinugCSharp8Demo
                 disposedValue = true;
             }
 
-            Console.WriteLine("This is the Dispositor class destructor!");
-        }
-
-        ~Dispositor()
-        {
-            Dispose(false);
+            Console.WriteLine("This is the Dispositor class is being disposed!");
         }
 
         public void Dispose()

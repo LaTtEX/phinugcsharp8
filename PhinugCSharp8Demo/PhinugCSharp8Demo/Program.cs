@@ -10,33 +10,27 @@ namespace PhinugCSharp8Demo
         static void Main(string[] args)
         {
             //Static Local Functions
-            //Read more at https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#static-local-functions
             StaticLocalFunction();
             End_Feature();
 
             //Asynchronous Streams
-            //https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#asynchronous-streams
             AsynchronousStreams(); //await is ommited by design
             Thread.Sleep(10500);
             End_Feature();
 
             //Indices and Ranges
-            //Read more at https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#indices-and-ranges
             IndicesAndRanges();
             End_Feature();
 
             //Default interface methods
-            //https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#default-interface-methods
             DefaultInterfaceMethods();
             End_Feature();
 
             //Null coallescing assignment
-            //https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#null-coalescing-assignment
             NullCoallescingAssignment();
             End_Feature();
 
             //Using Declarations
-            //https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#using-declarations
             UsingDeclarations();
             End_Feature();
 
