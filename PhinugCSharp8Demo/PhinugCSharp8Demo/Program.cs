@@ -7,14 +7,18 @@ namespace PhinugCSharp8Demo
         static void Main(string[] args)
         {
             //1. Static Local Functions
+            //Read more at https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#static-local-functions
             static string LocalFunc()
             {
                 return "Hi I'm local!";
             }
 
             Console.WriteLine($"The local func said: {LocalFunc()}");
+            Console.WriteLine("=============");
+            Console.WriteLine();
 
             //2. Indices and Ranges
+            //Read more at https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#indices-and-ranges
             var words = new string[]
             {
                             // index from start    index from end
@@ -54,6 +58,16 @@ namespace PhinugCSharp8Demo
             Array.ForEach(words[..^2], w => Console.Write($"{w} "));
             Console.WriteLine();
             Console.WriteLine();
+            Console.WriteLine("=============");
+
+            //3. Default interface methods
+            //https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#default-interface-methods
+            ISayALittlePrayer defaultPrayer = new SayALittlePrayerDefault();
+            ISayALittlePrayer implementedPrayer = new SayALittlePrayerImplement();
+            Console.WriteLine($"Default: {defaultPrayer.SayALittlePrayer()}");
+            Console.WriteLine($"Implemented: {implementedPrayer.SayALittlePrayer()}");
+            Console.WriteLine();
+            Console.WriteLine("=============");
         }
     }
 }
