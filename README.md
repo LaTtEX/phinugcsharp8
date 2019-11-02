@@ -1,5 +1,5 @@
-# phinugcsharp8
-Demo of C# 8 language features, some of which were demoed at PHINUG meetups and .NET Conf 2019 Manila.
+# C# 8.0 New Features Demo
+Demo of C# 8.0 language features, some of which I have demoed at PHINUG meetups and .NET Conf 2019 Manila.
 
 The features included in this demo solution are the ff:
 - [Static local functions](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#static-local-functions)
