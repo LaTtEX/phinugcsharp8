@@ -34,8 +34,11 @@ namespace PhinugCSharp8Demo
             UsingDeclarations();
             End_Feature();
 
+            //Enhancement of Interpolated Verbatim Strings
+            InterPolatedVerbatimStrings();
+            End_Feature();
         }
-
+        
         private static void StaticLocalFunction()
         {
             Console.WriteLine("Static Local Functions");
@@ -151,6 +154,13 @@ namespace PhinugCSharp8Demo
 
                 return evens;
             }
+        }
+
+        private static void InterPolatedVerbatimStrings()
+        {
+            Console.WriteLine("Enhancement of Interpolated Verbatim Strings");
+            Console.WriteLine($@"This one works with $@. \n <== will not generate new line.");
+            Console.WriteLine(@$"This one works with @$. \n <== will not generate new line.");
         }
 
         private static void End_Feature()

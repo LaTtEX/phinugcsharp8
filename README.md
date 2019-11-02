@@ -8,6 +8,7 @@ The features included in this demo solution are the ff:
 - [Default interface methods](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#default-interface-methods)
 - [Null-coallescing assignment](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#null-coalescing-assignment)
 - [Using declarations](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#using-declarations)
+- [Enhancement of interpolated verbatim strings](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#enhancement-of-interpolated-verbatim-strings)
 
 Note that the Program.cs file itself uses the static local functions feature.
 
