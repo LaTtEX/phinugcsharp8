@@ -9,7 +9,6 @@ namespace PhinugCSharp8Demo
         {
             //Static Local Functions
             //Read more at https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#static-local-functions
-            
             StaticLocalFunction();
             End_Feature();
 
@@ -27,6 +26,29 @@ namespace PhinugCSharp8Demo
             //https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#null-coalescing-assignment
             NullCoallescingAssignment();
             End_Feature();
+
+            //Using Declarations
+            //https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#using-declarations
+            UsingDeclarations();
+            End_Feature();
+        }
+
+        private static void UsingDeclarations()
+        {
+            Console.WriteLine("Using Declarations");
+            Console.WriteLine($"The number of even numbers in the Dispositor class is {CountEvens()}.");
+
+            static int CountEvens()
+            {
+                using var dispositor = new Dispositor();
+                int evens = 0;
+                foreach (var number in dispositor.Numbers)
+                {
+                    if (number % 2 == 0) evens++;
+                }
+
+                return evens;
+            }
         }
 
         private static void NullCoallescingAssignment()
@@ -40,8 +62,8 @@ namespace PhinugCSharp8Demo
             numbers.Add(i ??= 17);
             numbers.Add(i ??= 20);
 
-            Console.WriteLine(string.Join(" ", numbers));  // output: 17 17
-            Console.WriteLine(i);  // output: 17
+            Console.WriteLine($"The numbers in the list are {string.Join(" ", numbers)}.");
+            Console.WriteLine($"The value of i is {i}.");
         }
 
         private static void DefaultInterfaceMethods()
@@ -70,7 +92,7 @@ namespace PhinugCSharp8Demo
                 "the",      // 6                   ^3
                 "lazy",     // 7                   ^2
                 "dog"       // 8                   ^1
-                        };              // 9 (or words.Length) ^0
+            };              // 9 (or words.Length) ^0
 
             Console.WriteLine("Ranges");
             Console.WriteLine($"words[0]: {words[0]}");
