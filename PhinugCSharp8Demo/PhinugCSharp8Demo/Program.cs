@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PhinugCSharp8Demo
 {
@@ -6,21 +7,59 @@ namespace PhinugCSharp8Demo
     {
         static void Main(string[] args)
         {
-            //1. Static Local Functions
+            //Static Local Functions
             //Read more at https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#static-local-functions
-            static string LocalFunc()
-            {
-                return "Hi I'm local!";
-            }
+            
+            StaticLocalFunction();
+            End_Feature();
 
-            Console.WriteLine($"The local func said: {LocalFunc()}");
-            Console.WriteLine("=============");
-            Console.WriteLine();
-
-            //2. Indices and Ranges
+            //Indices and Ranges
             //Read more at https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#indices-and-ranges
+            IndicesAndRanges();
+            End_Feature();
+
+            //Default interface methods
+            //https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#default-interface-methods
+            DefaultInterfaceMethods();
+            End_Feature();
+
+            //Null coallescing assignment
+            //https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#null-coalescing-assignment
+            NullCoallescingAssignment();
+            End_Feature();
+        }
+
+        private static void NullCoallescingAssignment()
+        {
+            Console.WriteLine("Null Coallescing Assignment (??=)");
+
+            List<int> numbers = null;
+            int? i = null;
+
+            numbers ??= new List<int>();
+            numbers.Add(i ??= 17);
+            numbers.Add(i ??= 20);
+
+            Console.WriteLine(string.Join(" ", numbers));  // output: 17 17
+            Console.WriteLine(i);  // output: 17
+        }
+
+        private static void DefaultInterfaceMethods()
+        {
+            Console.WriteLine("Default Interface Implementation");
+
+            ISayALittlePrayer defaultPrayer = new SayALittlePrayerDefault();
+            ISayALittlePrayer implementedPrayer = new SayALittlePrayerImplement();
+            Console.WriteLine($"Default: {defaultPrayer.SayALittlePrayer()}");
+            Console.WriteLine($"Implemented: {implementedPrayer.SayALittlePrayer()}");
+        }
+
+        private static void IndicesAndRanges()
+        {
+            Console.WriteLine("Indices and Ranges");
+
             var words = new string[]
-            {
+                        {
                             // index from start    index from end
                 "The",      // 0                   ^9
                 "quick",    // 1                   ^8
@@ -31,12 +70,11 @@ namespace PhinugCSharp8Demo
                 "the",      // 6                   ^3
                 "lazy",     // 7                   ^2
                 "dog"       // 8                   ^1
-            };              // 9 (or words.Length) ^0
+                        };              // 9 (or words.Length) ^0
 
             Console.WriteLine("Ranges");
             Console.WriteLine($"words[0]: {words[0]}");
             Console.WriteLine($"words[^5]: {words[^5]}");
-            Console.WriteLine();
             Console.WriteLine();
 
             Console.WriteLine("All words:");
@@ -57,17 +95,25 @@ namespace PhinugCSharp8Demo
             Console.WriteLine("words[..^2]");
             Array.ForEach(words[..^2], w => Console.Write($"{w} "));
             Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("=============");
+        }
 
-            //3. Default interface methods
-            //https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#default-interface-methods
-            ISayALittlePrayer defaultPrayer = new SayALittlePrayerDefault();
-            ISayALittlePrayer implementedPrayer = new SayALittlePrayerImplement();
-            Console.WriteLine($"Default: {defaultPrayer.SayALittlePrayer()}");
-            Console.WriteLine($"Implemented: {implementedPrayer.SayALittlePrayer()}");
+        private static void StaticLocalFunction()
+        {
+            Console.WriteLine("Static Local Functions");
+
+            static string LocalFunc()
+            {
+                return "Hi I'm local!";
+            }
+
+            Console.WriteLine($"The local func said: {LocalFunc()}");
+        }
+
+        private static void End_Feature()
+        {
             Console.WriteLine();
             Console.WriteLine("=============");
+            Console.WriteLine();
         }
     }
 }
