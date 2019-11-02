@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace PhinugCSharp8Demo
 {
@@ -10,6 +12,12 @@ namespace PhinugCSharp8Demo
             //Static Local Functions
             //Read more at https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#static-local-functions
             StaticLocalFunction();
+            End_Feature();
+
+            //Asynchronous Streams
+            //https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#asynchronous-streams
+            AsynchronousStreams(); //await is ommited by design
+            Thread.Sleep(10500);
             End_Feature();
 
             //Indices and Ranges
@@ -31,49 +39,38 @@ namespace PhinugCSharp8Demo
             //https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#using-declarations
             UsingDeclarations();
             End_Feature();
+
         }
 
-        private static void UsingDeclarations()
+        private static void StaticLocalFunction()
         {
-            Console.WriteLine("Using Declarations");
-            Console.WriteLine($"The number of even numbers in the Dispositor class is {CountEvens()}.");
+            Console.WriteLine("Static Local Functions");
 
-            static int CountEvens()
+            static string LocalFunc()
             {
-                using var dispositor = new Dispositor();
-                int evens = 0;
-                foreach (var number in dispositor.Numbers)
-                {
-                    if (number % 2 == 0) evens++;
-                }
-
-                return evens;
+                return "Hi I'm local!";
             }
+
+            Console.WriteLine($"The local func said: {LocalFunc()}");
         }
 
-        private static void NullCoallescingAssignment()
+        private static async Task AsynchronousStreams()
         {
-            Console.WriteLine("Null-Coallescing Assignment (??=)");
+            Console.WriteLine("Asynchronous Streams");
 
-            List<int> numbers = null;
-            int? i = null;
+            await foreach (var number in GenerateSequence())
+            {
+                Console.WriteLine(number);
+            }
 
-            numbers ??= new List<int>();
-            numbers.Add(i ??= 17);
-            numbers.Add(i ??= 20);
-
-            Console.WriteLine($"The numbers in the list are {string.Join(" ", numbers)}.");
-            Console.WriteLine($"The value of i is {i}.");
-        }
-
-        private static void DefaultInterfaceMethods()
-        {
-            Console.WriteLine("Default Interface Implementation");
-
-            ISayALittlePrayer defaultPrayer = new SayALittlePrayerDefault();
-            ISayALittlePrayer implementedPrayer = new SayALittlePrayerImplement();
-            Console.WriteLine($"Default: {defaultPrayer.SayALittlePrayer()}");
-            Console.WriteLine($"Implemented: {implementedPrayer.SayALittlePrayer()}");
+            static async IAsyncEnumerable<int> GenerateSequence()
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    await Task.Delay(500);
+                    yield return i;
+                }
+            }
         }
 
         private static void IndicesAndRanges()
@@ -94,14 +91,14 @@ namespace PhinugCSharp8Demo
                 "dog"       // 8                   ^1
             };              // 9 (or words.Length) ^0
 
-            Console.WriteLine("Ranges");
-            Console.WriteLine($"words[0]: {words[0]}");
-            Console.WriteLine($"words[^5]: {words[^5]}");
-            Console.WriteLine();
-
             Console.WriteLine("All words:");
             Array.ForEach(words, w => Console.Write($"{w} "));
             Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("Ranges");
+            Console.WriteLine($"words[0]: {words[0]}");
+            Console.WriteLine($"words[^5]: {words[^5]}");
             Console.WriteLine();
 
             Console.WriteLine("words[1..7]");
@@ -119,16 +116,47 @@ namespace PhinugCSharp8Demo
             Console.WriteLine();
         }
 
-        private static void StaticLocalFunction()
+        private static void DefaultInterfaceMethods()
         {
-            Console.WriteLine("Static Local Functions");
+            Console.WriteLine("Default Interface Implementation");
 
-            static string LocalFunc()
+            ISayALittlePrayer defaultPrayer = new SayALittlePrayerDefault();
+            ISayALittlePrayer implementedPrayer = new SayALittlePrayerImplement();
+            Console.WriteLine($"Default: {defaultPrayer.SayALittlePrayer()}");
+            Console.WriteLine($"Implemented: {implementedPrayer.SayALittlePrayer()}");
+        }
+
+        private static void NullCoallescingAssignment()
+        {
+            Console.WriteLine("Null-Coallescing Assignment (??=)");
+
+            List<int> numbers = null;
+            int? i = null;
+
+            numbers ??= new List<int>();
+            numbers.Add(i ??= 17);
+            numbers.Add(i ??= 20);
+
+            Console.WriteLine($"The numbers in the list are {string.Join(" ", numbers)}.");
+            Console.WriteLine($"The value of i is {i}.");
+        }
+
+        private static void UsingDeclarations()
+        {
+            Console.WriteLine("Using Declarations");
+            Console.WriteLine($"The number of even numbers in the Dispositor class is {CountEvens()}.");
+
+            static int CountEvens()
             {
-                return "Hi I'm local!";
-            }
+                using var dispositor = new Dispositor();
+                int evens = 0;
+                foreach (var number in dispositor.Numbers)
+                {
+                    if (number % 2 == 0) evens++;
+                }
 
-            Console.WriteLine($"The local func said: {LocalFunc()}");
+                return evens;
+            }
         }
 
         private static void End_Feature()

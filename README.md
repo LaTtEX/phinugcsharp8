@@ -3,6 +3,7 @@ Demo of C# 8 language features.
 
 The features included in this demo solution are the ff:
 - Static local functions
+- Asynchronous streams
 - Indices and ranges
 - Default interface methods
 - Null-coallescing assignment
