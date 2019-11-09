@@ -42,6 +42,10 @@ namespace PhinugCSharp8Demo
             //Pattern Matching - Switch Expressions
             PatternMatchingSwitchExpressions();
             End_Feature();
+
+            //Pattern Matching - Property Patterns
+            PatternMatchingPropertyPatterns();
+            End_Feature();
         }
 
 
@@ -216,6 +220,43 @@ namespace PhinugCSharp8Demo
                             paramName: nameof(shape));
                 }
             }
+        }
+
+        private static void PatternMatchingPropertyPatterns()
+        {
+            Console.WriteLine("Pattern Matching - Property Patterns");
+
+            var wongKarWai = new ChineseName("Wong", "Kar", "Wai");
+            var georgeBush = new AmericanName("George", "Bush", "Walker");
+            var tomCruise = new AmericanName("Tom", "Cruise");
+            var antonioBanderas = 
+                new SpanishName("Jose", "Antonio", mothersSurname: "Bandera", fathersSurname: "Dominguez");
+            var johnLloyd = new FilipinoName("John", familyName: "Cruz",  secondName: "Lloyd", mothersSurname: "Espidol");
+            var duterte = new FilipinoName("Rodrigo", "Duterte", mothersSurname: "Roa");
+            var robinPadilla = new FilipinoName("Robin", "Padilla");
+            var nameList = new List<Name> { wongKarWai, georgeBush, tomCruise, antonioBanderas, johnLloyd, duterte, robinPadilla };
+
+            nameList.ForEach(name => Console.WriteLine(GetFullName(name)));
+
+            static string GetFullName(Name name) =>
+                name switch
+                {
+                    SpanishName sname 
+                        => $"{name.FirstName} {name.SecondName} {name.FathersSurname} {sname.MothersSurname}",
+                    ChineseName cname 
+                        => $"{name.FathersSurname} {name.FirstName} {name.SecondName}",
+                    AmericanName aname when aname.SecondName is null 
+                        => $"{name.FirstName} {name.FathersSurname}",
+                    AmericanName aname
+                        => $"{name.FirstName} {name.SecondName.Substring(0, 1)}. {name.FathersSurname}",
+                    FilipinoName fname when fname.SecondName is null && fname.MothersSurname is null
+                        => $"{name.FirstName} {name.FathersSurname}",
+                    FilipinoName fname when fname.SecondName is null && !(fname.MothersSurname is null)
+                        => $"{name.FirstName} {name.MothersSurname.Substring(0,1)}. {name.FathersSurname}",
+                    FilipinoName fname
+                        => $"{name.FirstName} {name.SecondName} {name.MothersSurname.Substring(0, 1)}. {name.FathersSurname}",
+                    _ => $"no match"
+                };
         }
 
         private static void End_Feature()
