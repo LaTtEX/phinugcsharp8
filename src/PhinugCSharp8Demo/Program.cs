@@ -15,7 +15,7 @@ namespace PhinugCSharp8Demo
 
             //Asynchronous Streams
             AsynchronousStreams(); //await is ommited by design
-            Thread.Sleep(10500);
+            Thread.Sleep(3300);
             End_Feature();
 
             //Indices and Ranges
@@ -62,9 +62,9 @@ namespace PhinugCSharp8Demo
 
             static async IAsyncEnumerable<int> GenerateSequence()
             {
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 10; i++)
                 {
-                    await Task.Delay(500);
+                    await Task.Delay(300);
                     yield return i;
                 }
             }
@@ -81,36 +81,46 @@ namespace PhinugCSharp8Demo
                 "quick",    // 1                   ^8
                 "brown",    // 2                   ^7
                 "fox",      // 3                   ^6
-                "jumped",   // 4                   ^5
+                "jumps",   // 4                   ^5
                 "over",     // 5                   ^4
                 "the",      // 6                   ^3
                 "lazy",     // 7                   ^2
                 "dog"       // 8                   ^1
             };              // 9 (or words.Length) ^0
 
-            Console.WriteLine("All words:");
+            Console.Write("All words: ");
             Array.ForEach(words, w => Console.Write($"{w} "));
             Console.WriteLine();
             Console.WriteLine();
 
-            Console.WriteLine("Ranges");
+            Console.WriteLine("Ranges:");
             Console.WriteLine($"words[0]: {words[0]}");
             Console.WriteLine($"words[^5]: {words[^5]}");
             Console.WriteLine();
 
-            Console.WriteLine("words[1..7]");
+            Console.Write("words[1..7]: ");
             Array.ForEach(words[1..7], w => Console.Write($"{w} "));
             Console.WriteLine();
             Console.WriteLine();
 
-            Console.WriteLine("words[..5]");
+            Console.Write("words[..5]: ");
             Array.ForEach(words[..5], w => Console.Write($"{w} "));
             Console.WriteLine();
             Console.WriteLine();
 
-            Console.WriteLine("words[..^2]");
+            Console.Write("words[..^2]: ");
             Array.ForEach(words[..^2], w => Console.Write($"{w} "));
             Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("Group every three words using variables:");
+            var groupBy = 3;
+            for (var counter = 0; counter < words.Length; counter += groupBy)
+            {
+                Console.Write($"Group {(counter / groupBy) + 1}: ");
+                Array.ForEach(words[counter..(counter + groupBy)], w => Console.Write($"{w} "));
+                Console.WriteLine(); 
+            };
         }
 
         private static void DefaultInterfaceMethods()
@@ -149,7 +159,7 @@ namespace PhinugCSharp8Demo
                 int evens = 0;
                 foreach (var number in dispositor.Numbers)
                 {
-                    if (number % 2 == 0) evens++;
+                    evens += number % 2;
                 }
 
                 return evens;
