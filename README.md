@@ -9,6 +9,9 @@ The features included in this demo solution are the ff:
 - [Null-coallescing assignment](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#null-coalescing-assignment)
 - [Using declarations](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#using-declarations)
 - [Enhancement of interpolated verbatim strings](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#enhancement-of-interpolated-verbatim-strings)
+- [Pattern Matching - Switch Expressions](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#switch-expressions)
+- [Pattern Matching - Property Patterns](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#property-patterns)
+
 
 Note that the Program.cs file itself uses the static local functions feature.
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using PhinugCSharp8Demo.Pattern_Matching;
 
 namespace PhinugCSharp8Demo
 {
@@ -37,8 +38,14 @@ namespace PhinugCSharp8Demo
             //Enhancement of Interpolated Verbatim Strings
             InterPolatedVerbatimStrings();
             End_Feature();
+
+            //Pattern Matching - Switch Expressions
+            PatternMatchingSwitchExpressions();
+            End_Feature();
         }
-        
+
+
+
         private static void StaticLocalFunction()
         {
             Console.WriteLine("Static Local Functions");
@@ -171,6 +178,35 @@ namespace PhinugCSharp8Demo
             Console.WriteLine("Enhancement of Interpolated Verbatim Strings");
             Console.WriteLine($@"This one works with $@. \n <== will not generate new line.");
             Console.WriteLine(@$"This one works with @$. \n <== will not generate new line.");
+        }
+
+        private static void PatternMatchingSwitchExpressions()
+        {
+            Console.WriteLine("Pattern Matching - Switch Expressions");
+
+            static double ComputeArea_SwitchWithConditionals(object shape) 
+            {
+                switch (shape)
+                {
+                    case Square s when s.Side == 0:
+                    case Circle c when c.Radius == 0:
+                    case Triangle t when t.Base == 0 || t.Height == 0:
+                    case Rectangle r when r.Length == 0 || r.Height == 0:
+                        return 0;
+                    case Square s:
+                        return s.Side * s.Side;
+                    case Circle c:
+                        return c.Radius * c.Radius * Math.PI;
+                    case Triangle t:
+                        return t.Base * t.Height / 2;
+                    case Rectangle r:
+                        return r.Length * r.Height;
+                    default:
+                        throw new ArgumentException(
+                            message: "shape is not a recognized shape",
+                            paramName: nameof(shape));
+                }
+            }
         }
 
         private static void End_Feature()
