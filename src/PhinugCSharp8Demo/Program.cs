@@ -183,6 +183,15 @@ namespace PhinugCSharp8Demo
         private static void PatternMatchingSwitchExpressions()
         {
             Console.WriteLine("Pattern Matching - Switch Expressions");
+            
+            var square = new Square(3); //side = 3
+            var circle = new Circle(1.0); //radius = 1
+            var triangle = new Triangle(5.0, 4.0); //base = 5, height = 4
+            var rectangle = new Rectangle(3.0, 4.0); //base = 3, height = 4
+            var shapeArray = new object[]{square, circle, triangle, rectangle};
+            Array.ForEach(
+                shapeArray, shape => 
+                Console.WriteLine($"Type: {shape.GetType().Name}, Area: {ComputeArea_SwitchWithConditionals(shape)}"));
 
             static double ComputeArea_SwitchWithConditionals(object shape) 
             {
