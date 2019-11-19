@@ -230,8 +230,8 @@ namespace PhinugCSharp8Demo
             var georgeBush = new AmericanName("George", "Bush", "Walker");
             var tomCruise = new AmericanName("Tom", "Cruise");
             var antonioBanderas = 
-                new SpanishName("Jose", "Antonio", mothersSurname: "Bandera", fathersSurname: "Dominguez");
-            var johnLloyd = new FilipinoName("John", familyName: "Cruz",  secondName: "Lloyd", mothersSurname: "Espidol");
+                new SpanishName("Jose", "Antonio", "Bandera", "Dominguez");
+            var johnLloyd = new FilipinoName("John", "Cruz",  secondName: "Lloyd", mothersSurname: "Espidol");
             var duterte = new FilipinoName("Rodrigo", "Duterte", mothersSurname: "Roa");
             var robinPadilla = new FilipinoName("Robin", "Padilla");
             var nameList = new List<Name> { wongKarWai, georgeBush, tomCruise, antonioBanderas, johnLloyd, duterte, robinPadilla };
