@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PhinugCSharp8Demo
+namespace PhinugCSharp8Demo.Default_Interface_Implementation
 {
     public interface ISayALittlePrayer
     {

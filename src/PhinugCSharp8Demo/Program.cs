@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using PhinugCSharp8Demo.Default_Interface_Implementation;
 using PhinugCSharp8Demo.Pattern_Matching;
 
 namespace PhinugCSharp8Demo
@@ -45,6 +46,10 @@ namespace PhinugCSharp8Demo
 
             //Pattern Matching - Property Patterns
             PatternMatchingPropertyPatterns();
+            End_Feature();
+
+            //Pattern Matching - Tuple Patterns
+            PatternMatchingTuplePatterns();
             End_Feature();
         }
 
@@ -257,6 +262,11 @@ namespace PhinugCSharp8Demo
                         => $"{name.FirstName} {name.SecondName} {name.MothersSurname.Substring(0, 1)}. {name.FathersSurname}",
                     _ => $"no match"
                 };
+        }
+
+        private static void PatternMatchingTuplePatterns()
+        {
+            
         }
 
         private static void End_Feature()
