@@ -12,6 +12,7 @@ The features included in this demo solution are the ff:
 - [Pattern Matching - Switch Expressions](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#switch-expressions)
 - [Pattern Matching - Property Patterns](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#property-patterns)
 - [Pattern Matching - Tuple Patterns](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#tuple-patterns)
+- [Pattern Matching - Positional Patterns](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8#positional-patterns)
 
 
 Note that the Program.cs file itself uses the static local functions feature.
