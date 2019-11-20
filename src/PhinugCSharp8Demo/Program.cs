@@ -24,10 +24,6 @@ namespace PhinugCSharp8Demo
             IndicesAndRanges();
             End_Feature();
 
-            //Default interface methods
-            DefaultInterfaceMethods();
-            End_Feature();
-
             //Null coallescing assignment
             NullCoallescingAssignment();
             End_Feature();
@@ -56,6 +52,10 @@ namespace PhinugCSharp8Demo
             PatternMatchingPositionalPatterns();
             End_Feature();
             
+            //Default interface methods
+            DefaultInterfaceMethods();
+            End_Feature();
+
             //Nullable Reference Types
             NullableReferenceTypes();
             End_Feature();
