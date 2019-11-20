@@ -55,6 +55,10 @@ namespace PhinugCSharp8Demo
             //Pattern Matching - Positional Patterns
             PatternMatchingPositionalPatterns();
             End_Feature();
+            
+            //Nullable Reference Types
+            NullableReferenceTypes();
+            End_Feature();
         }
 
 
@@ -301,19 +305,29 @@ namespace PhinugCSharp8Demo
             Console.WriteLine($"Point (1, -1): {GetQuadrant(new Point(1, -1))}");
             Console.WriteLine($"Point (-1, 1): {GetQuadrant(new Point(-1, 1))}");
             Console.WriteLine($"Point (-1, -1): {GetQuadrant(new Point(-1, -1))}");
-            Console.WriteLine($"Point (0, 1): {GetQuadrant(new Point(0, 0))}");
-            Console.WriteLine($"Point (1, 0): {GetQuadrant(new Point(0, 0))}");
+            Console.WriteLine($"Point (0, 1): {GetQuadrant(new Point(0, 1))}");
+            Console.WriteLine($"Point (1, 0): {GetQuadrant(new Point(1, 0))}");
 
-            static Quadrant GetQuadrant(Point point) => point switch
-            {
-                (0, 0) => Quadrant.Origin,
-                var (x, y) when x > 0 && y > 0 => Quadrant.One,
-                var (x, y) when x < 0 && y > 0 => Quadrant.Two,
-                var (x, y) when x < 0 && y < 0 => Quadrant.Three,
-                var (x, y) when x > 0 && y < 0 => Quadrant.Four,
-                var (_, _) => Quadrant.OnBorder,
-                _ => Quadrant.Unknown
-            };
+            static Quadrant GetQuadrant(Point point) => 
+                point switch
+                {
+                    (0, 0) => Quadrant.Origin,
+                    var (x, y) when x > 0 && y > 0 => Quadrant.One,
+                    var (x, y) when x < 0 && y > 0 => Quadrant.Two,
+                    var (x, y) when x < 0 && y < 0 => Quadrant.Three,
+                    var (x, y) when x > 0 && y < 0 => Quadrant.Four,
+                    (_,_) => Quadrant.OnBorder,
+                    _ => Quadrant.Unknown
+                };
+        }
+
+        public static void NullableReferenceTypes()
+        {
+            Console.WriteLine("Nullable Reference Types");
+
+            Customer newCustomer = new Customer("non nullable", null);
+            Console.WriteLine($"Firstname: {newCustomer.FirstName}");
+            Console.WriteLine($"LastName: {newCustomer.LastName}");
         }
 
         private static void End_Feature()
